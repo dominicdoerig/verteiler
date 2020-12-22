@@ -9,3 +9,5 @@ tmp/
 
 # Allow .gitkeep
 !data/input/.gitkeep
+debug.log
+__pycache__/
