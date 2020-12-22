@@ -11,3 +11,4 @@ tmp/
 !data/input/.gitkeep
 debug.log
 __pycache__/
+exploratory_data_analysis/.ipynb_checkpoints/
