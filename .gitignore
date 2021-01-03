@@ -1,14 +1,24 @@
 # JetBrains IDE
 .idea/
 
-# Ignore (Content of) Folders
-data/input/*
-venv/
-tmp/
+# Byte-compiled / optimized / DLL files
+__pycache__/
 
+# Jupyter Notebook
+.ipynb_checkpoints
+exploratory_data_analysis/.ipynb_checkpoints/
+
+# Logging
+debug.log
+
+# Virtual Environments
+venv/
+
+# Ignore (Content of) Folders
+tmp/
 
 # Allow .gitkeep
 !data/input/.gitkeep
-debug.log
-__pycache__/
-exploratory_data_analysis/.ipynb_checkpoints/
+
+
+
