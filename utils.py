@@ -65,3 +65,30 @@ def reduce_memory_usage(df, verbose=True):
             )
         )
     return df
+
+
+def get_splits(df: pd.core.frame.DataFrame, fh: int = 2, n_splits: int = 5) -> list:
+    """
+    Get splits for time-series cross validation.
+    Generate index to split data into training and test set.
+    The returned index (Year, Week) represents the end of the training data.
+
+    :param df: DataFrame to be splitted (must contain columns 'Year' and 'Week')
+    :param fh: Forecast horizon (int, min: 1, default: 2)
+    :param n_splits: Number of splits (int, min: 2, default: 5)
+    :return list of tuples (Week & Year) representing the end of the training period , 
+            Example: [(51, 2020), (49, 2020)]
+    """
+    if not n_splits >= 2:
+        raise ValueError("Parameter 'n_Splits' must be at least 2.")
+    if not fh >= 1:
+        raise ValueError("Parameter 'fh' must be at least 1.")
+
+    splits = []
+
+    calendar_weeks = [tuple(x) for x in df[['Week', 'Year']
+                                           ].drop_duplicates().to_records(index=False)]
+    calendar_weeks.sort(key=lambda tup: tup[1])  # sort list of tuples
+    for i in range(n_splits):
+        splits.append(calendar_weeks[-(1+fh+fh*i)])
+    return splits
