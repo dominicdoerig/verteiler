@@ -3,6 +3,7 @@ from google.cloud import bigquery
 from google.cloud import bigquery_storage
 import datetime
 import pandas as pd
+from sklearn.preprocessing import LabelEncoder
 
 
 def get_project_root():
@@ -92,3 +93,21 @@ def get_splits(df: pd.core.frame.DataFrame, fh: int = 2, n_splits: int = 5) -> l
     for i in range(n_splits):
         splits.append(calendar_weeks[-(1+fh+fh*i)])
     return splits
+
+
+def encode_categorical(df, cols, fillna=True, downcast_cols=True):
+    """
+    Encode categorical labels with value between 0 and n_classes-1 using LabelEncoder from Sklearn
+    :param df: pandas.DataFrame to be tranformed
+    :param cols: List of columns to be encoded
+    :return: pandas.DataFrame with encoded labels
+    """
+    for col in cols:
+        encoder = LabelEncoder()
+        df[col] = encoder.fit_transform(
+            df[col].fillna("MISSING") if fillna else df[col])
+
+    if downcast_cols:
+        df = reduce_mem_usage(df)
+    return df
+

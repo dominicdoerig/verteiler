@@ -14,11 +14,10 @@ debug.log
 # Virtual Environments
 venv/
 
-# Ignore (Content of) Folders
-tmp/
-
 # Allow .gitkeep
 !data/input/.gitkeep
 
-
-
+# Custom Files and Folders
+tmp/
+Forecasting/Wareverschiebung-VZ-zu-Filiale.csv
+Forecasting - Benchmark/models/
