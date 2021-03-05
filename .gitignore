@@ -6,7 +6,7 @@ __pycache__/
 
 # Jupyter Notebook
 .ipynb_checkpoints
-exploratory_data_analysis/.ipynb_checkpoints/
+*/.ipynb_checkpoints/
 
 # Logging
 debug.log
@@ -19,5 +19,6 @@ venv/
 
 # Custom Files and Folders
 tmp/
-Forecasting/Wareverschiebung-VZ-zu-Filiale.csv
-Forecasting - Benchmark/models/
+02_Forecasting_Benchmark/models/
+03_Forecasting_LightGBM/Wareverschiebung-VZ-zu-Filiale.csv
+
