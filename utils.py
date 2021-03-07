@@ -76,12 +76,12 @@ def get_splits(df: pd.core.frame.DataFrame, fh: int = 2, n_splits: int = 5) -> l
 
     :param df: DataFrame to be splitted (must contain columns 'Year' and 'Week')
     :param fh: Forecast horizon (int, min: 1, default: 2)
-    :param n_splits: Number of splits (int, min: 2, default: 5)
+    :param n_splits: Number of splits (int, min: 1, default: 5)
     :return list of tuples (Week & Year) representing the end of the training period , 
             Example: [(51, 2020), (49, 2020)]
     """
-    if not n_splits >= 2:
-        raise ValueError("Parameter 'n_Splits' must be at least 2.")
+    if not n_splits >= 1:
+        raise ValueError("Parameter 'n_Splits' must be at least 1.")
     if not fh >= 1:
         raise ValueError("Parameter 'fh' must be at least 1.")
 
