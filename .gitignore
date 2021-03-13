@@ -22,3 +22,5 @@ tmp/
 02_Forecasting_Benchmark/models/
 03_Forecasting_LightGBM/Wareverschiebung-VZ-zu-Filiale.csv
 
+03_Forecasting_LightGBM/models/
+02_Forecasting_Benchmark/Wareverschiebung-VZ-zu-Filiale.csv
