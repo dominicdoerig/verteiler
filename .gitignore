@@ -15,13 +15,13 @@ debug.log
 venv/
 
 # Allow .gitkeep
-!data/input/.gitkeep
+!03_Forecasting_LightGBM/models/.gitkeep
+!02_Forecasting_Benchmark/models/.gitkeep
 
 # Custom Files and Folders
 tmp/
 02_Forecasting_Benchmark/models/
 03_Forecasting_LightGBM/Wareverschiebung-VZ-zu-Filiale.csv
-
 03_Forecasting_LightGBM/models/
 02_Forecasting_Benchmark/Wareverschiebung-VZ-zu-Filiale.csv
 03_Forecasting_LightGBM/data.csv
