@@ -17,6 +17,7 @@ venv/
 # Allow .gitkeep
 !03_Forecasting_LightGBM/models/.gitkeep
 !02_Forecasting_Benchmark/models/.gitkeep
+!00_Forecasting_Benchmark/data/forecasts/.gitkeep
 
 # Custom Files and Folders
 tmp/
