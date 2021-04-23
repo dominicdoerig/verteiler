@@ -95,19 +95,41 @@ def get_splits(df: pd.core.frame.DataFrame, fh: int = 2, n_splits: int = 5) -> l
     return splits
 
 
-def encode_categorical(df, cols, fillna=True, downcast_cols=True):
+def encode_categorical(df, cols, return_encoders = False, downcast_cols=False):
     """
     Encode categorical labels with value between 0 and n_classes-1 using LabelEncoder from Sklearn
     :param df: pandas.DataFrame to be tranformed
     :param cols: List of columns to be encoded
-    :return: pandas.DataFrame with encoded labels
+    :param return_encoders: wheter or not a dict containing the LabelEncoders should be returned (default: False)
+    :param downcast_cols: Whether or not the numerical data types should be downcasted (default: False)
+    :return: pandas.DataFrame with encoded labels, dictionary with fitted encoders {'Column Name': LabelEncoder()} (optional)
     """
+    encoders = {}
     for col in cols:
         encoder = LabelEncoder()
-        df[col] = encoder.fit_transform(
-            df[col].fillna("MISSING") if fillna else df[col])
+        df[col] = encoder.fit_transform(df[col])
+        encoders[col] = encoder
 
     if downcast_cols:
         df = reduce_mem_usage(df)
+        
+    return df, encoders if return_encoders else df
+    
+
+def decode_categorical(df, encoders, downcast_cols=False):
+    """
+    Decodes categorical labels given a LabelEncoder
+    :param df: pandas.DataFrame to be tranformed
+    :param encoders: dictionary with fitted encoders,  {'Column Name': LabelEncoder()} 
+    :param downcast_cols: Whether or not the numerical data types should be downcasted (default: False)
+    :return: pandas.DataFrame with decoded labels
+    """
+    for col,encoder in encoders.items():
+        if col in df:
+            df[col] = encoder.inverse_transform(df[col])
+        
+    if downcast_cols:
+        df = reduce_mem_usage(df)
+        
     return df
 
