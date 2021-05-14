@@ -111,7 +111,7 @@ def encode_categorical(df, cols, return_encoders = False, downcast_cols=False):
         encoders[col] = encoder
 
     if downcast_cols:
-        df = reduce_mem_usage(df)
+        df = reduce_memory_usage(df)
         
     return df, encoders if return_encoders else df
     
@@ -129,7 +129,7 @@ def decode_categorical(df, encoders, downcast_cols=False):
             df[col] = encoder.inverse_transform(df[col])
         
     if downcast_cols:
-        df = reduce_mem_usage(df)
+        df = reduce_memory_usage(df)
         
     return df
 
