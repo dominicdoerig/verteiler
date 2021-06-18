@@ -20,10 +20,20 @@ Afterwards, one model for each class (high-, medium- & low seller) and for each 
 The article's category is retrieved from its master data (dt. Stammdaten).  
 Best results are achieved when using the Censhare Category Level 1. 
 
-### Performance Comparison ####
 
-Approach | RMSE (Turnover)
+#### 4) Boosted-Trees_v4.ipynb
+Here we use a Top-Down approach. We first aggregate the bottom level time series based on the article category, forecast the aggregated time series and obtain the bottom level time series by disaggregating the aggregated forecast.
+
+
+### Best Performing Model ###
+Boosted-Trees_v3.ipynb with following performance:
+
+Class | RMSE (Turnover)
 --- | --- | 
-Boosted-Trees.ipynb | 113.33
-Boosted-Trees_v2.ipynb | 107.60 
-Boosted-Trees_v3.ipynb | 96.18 
+A | 66.82
+B | 63.09 
+C | 84.92 
+ 
+
+
+
